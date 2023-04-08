@@ -9,9 +9,14 @@ namespace ProgGrafica
 {
     public class Game: GameWindow
     {
+        private Casa casa;
+        private Auto auto;
+
         public Game(int width, int height, string title)
             : base(width, height, GraphicsMode.Default, title)
         {
+           casa = new Casa();
+            auto = new Auto();
         }
 
         protected override void OnLoad(EventArgs e)
@@ -19,7 +24,10 @@ namespace ProgGrafica
             base.OnLoad(e);
             GL.ClearColor(Color4.White);
             GL.MatrixMode(MatrixMode.Projection);
-            GL.Ortho(-5, 5, -5, 5, -5, 5);
+            GL.Ortho(-20, 20, -20, 20, -20, 20);
+            GL.Rotate(10f, 1, 0, 0);
+            GL.Rotate(-10f, 0, 1, 0);
+
         }
 
         protected override void OnUpdateFrame(FrameEventArgs e)
@@ -36,14 +44,19 @@ namespace ProgGrafica
         {
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-            GL.Begin(PrimitiveType.LineLoop);
-            GL.Color3(1.0f, 0.0f, 0.0f);
-            GL.Vertex3(-1.0f, -1.0f, 0.0f);
-            GL.Color3(0.0f, 1.0f, 0.0f);
-            GL.Vertex3(1.0f, -1.0f, 0.0f);
-            GL.Color3(0.0f, 0.0f, 1.0f);
-            GL.Vertex3(0.0f, 1.0f, 0.0f);
-            GL.End();
+            //GL.Begin(PrimitiveType.LineLoop);
+            //GL.Color3(1.0f, 0.0f, 0.0f);
+            //GL.Vertex3(-1.0f, -1.0f, 0.0f);
+            //GL.Color3(0.0f, 1.0f, 0.0f);
+            //GL.Vertex3(1.0f, -1.0f, 0.0f);
+            //GL.Color3(0.0f, 0.0f, 1.0f);
+            //GL.Vertex3(0.0f, 1.0f, 0.0f);
+            //GL.End();
+
+            casa.Dibujar();
+            auto.Dibujar();
+            GL.Rotate(2f,0,1,0);
+
 
             SwapBuffers();
             base.OnRenderFrame(e);
