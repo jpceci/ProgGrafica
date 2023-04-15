@@ -12,8 +12,17 @@ namespace ProgGrafica
 {
     class Casa
     {
-        public Casa()
+        private Punto centro;
+        private float alto;
+        private float ancho;
+        private float profundidad;
+
+        public Casa(Punto centro, float alto, float ancho, float profundidad)
         {
+            this.centro = centro;
+            this.alto = alto;
+            this.ancho = ancho;
+            this.profundidad = profundidad;
         }
 
         public void Dibujar()
@@ -35,10 +44,10 @@ namespace ProgGrafica
         {
             GL.Begin(primitiveType);
             GL.Color3(Color.DarkOliveGreen);
-            GL.Vertex3(0f, -7f, -4f);
-            GL.Vertex3(0f, -5f, -4f);
-            GL.Vertex3(0f, -5f, -11f);
-            GL.Vertex3(0f, -7f, -11f);
+            GL.Vertex3(centro.x + ancho / 2, centro.y, centro.z + profundidad / 3);
+            GL.Vertex3(centro.x + ancho / 2, centro.y - (alto / 3) / 2, centro.z + profundidad / 3);
+            GL.Vertex3(centro.x + ancho / 2, centro.y - (alto / 3) / 2, centro.z - profundidad / 3);
+            GL.Vertex3(centro.x + ancho / 2, centro.y, centro.z - profundidad / 3);
             GL.End();
         }
 
@@ -46,10 +55,10 @@ namespace ProgGrafica
         {
             GL.Begin(primitiveType);
             GL.Color3(Color.DarkOliveGreen);
-            GL.Vertex3(-6.5f, -10f, 0f);
-            GL.Vertex3(-6.5f, -5f, 0f);
-            GL.Vertex3(-3.5f, -5f, 0f);
-            GL.Vertex3(-3.5f, -10f, 0f);
+            GL.Vertex3(centro.x - (ancho / 3) / 2, centro.y - alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x - (ancho / 3) / 2, centro.y, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x + (ancho / 3) / 2, centro.y, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x + (ancho / 3) / 2, centro.y - alto / 2, centro.z - profundidad / 2);
             GL.End();
         }
 
@@ -57,10 +66,10 @@ namespace ProgGrafica
         {
             GL.Begin(primitiveType);
             GL.Color3(Color.DarkGoldenrod);
-            GL.Vertex3(-10f, 0f, 0f);
-            GL.Vertex3(-5f, 5f, 0f);
-            GL.Vertex3(-5f, 5f, -15f);
-            GL.Vertex3(-10f, 0f, -15f);
+            GL.Vertex3(centro.x - ancho / 2, centro.y + alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x, centro.y + alto, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x, centro.y + alto, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x - ancho / 2, centro.y + alto / 2, centro.z + profundidad / 2);
             GL.End();
         }
 
@@ -68,10 +77,10 @@ namespace ProgGrafica
         {
             GL.Begin(primitiveType);
             GL.Color3(Color.Red);
-            GL.Vertex3(0f, 0f, 0f);
-            GL.Vertex3(-5f, 5f, 0f);
-            GL.Vertex3(-5f, 5f, -15f);
-            GL.Vertex3(0f, 0f, -15f);
+            GL.Vertex3(centro.x + ancho / 2, centro.y + alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x, centro.y + alto, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x, centro.y + alto, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y + alto / 2, centro.z + profundidad / 2);
             GL.End();
         }
 
@@ -79,9 +88,9 @@ namespace ProgGrafica
         {
             GL.Begin(primitiveType);
             GL.Color3(Color.Brown);
-            GL.Vertex3(-10f, 0f, -15f);
-            GL.Vertex3(-5f, 5f, -15f);
-            GL.Vertex3(0f, 0f, -15f);
+            GL.Vertex3(centro.x - ancho / 2, centro.y + alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x, centro.y + alto, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y + alto / 2, centro.z - profundidad / 2);
             GL.End();
         }
 
@@ -89,9 +98,9 @@ namespace ProgGrafica
         {
             GL.Begin(primitiveType);
             GL.Color3(Color.Cyan);
-            GL.Vertex3(-10f, 0f, 0f);
-            GL.Vertex3(-5f, 5f, 0f);
-            GL.Vertex3(0f, 0f, 0f);
+            GL.Vertex3(centro.x - ancho / 2, centro.y + alto / 2, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x, centro.y + alto, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y + alto / 2, centro.z + profundidad / 2);
             GL.End();
         }
 
@@ -99,10 +108,10 @@ namespace ProgGrafica
         {
             GL.Begin(primitiveType);
             GL.Color3(Color.Orange);
-            GL.Vertex3(-10f, -10f, -15f);
-            GL.Vertex3(-10f, 0f, -15f);
-            GL.Vertex3(0f, 0f, -15f);
-            GL.Vertex3(0f, -10f, -15f);
+            GL.Vertex3(centro.x - ancho / 2, centro.y - alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x - ancho / 2, centro.y + alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y + alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y - alto / 2, centro.z - profundidad / 2);
             GL.End();
         }
 
@@ -110,10 +119,10 @@ namespace ProgGrafica
         {
             GL.Begin(primitiveType);
             GL.Color3(Color.Yellow);
-            GL.Vertex3(-10f, -10f, 0f);
-            GL.Vertex3(-10f, 0f, 0f);
-            GL.Vertex3(0f, 0f, 0f);
-            GL.Vertex3(0f, -10f, 0f);
+            GL.Vertex3(centro.x - ancho / 2, centro.y - alto / 2, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x - ancho / 2, centro.y + alto / 2, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y + alto / 2, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y - alto / 2, centro.z + profundidad / 2);
             GL.End();
         }
 
@@ -121,10 +130,10 @@ namespace ProgGrafica
         {
             GL.Begin(primitiveType);
             GL.Color3(Color.Purple);
-            GL.Vertex3(0f, -10f, 0f);
-            GL.Vertex3(0f, 0f, 0f);
-            GL.Vertex3(0f, 0f, -15f);
-            GL.Vertex3(0f, -10f, -15f);
+            GL.Vertex3(centro.x - ancho / 2, centro.y - alto / 2, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x - ancho / 2, centro.y + alto / 2, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x - ancho / 2, centro.y + alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x - ancho / 2, centro.y - alto / 2, centro.z - profundidad / 2);
             GL.End();
         }
 
@@ -132,10 +141,10 @@ namespace ProgGrafica
         {
             GL.Begin(primitiveType);
             GL.Color3(Color.Blue);
-            GL.Vertex3(-10f, -10f, 0f);
-            GL.Vertex3(-10f, 0f, 0f);
-            GL.Vertex3(-10f, 0f, -15f);
-            GL.Vertex3(-10f, -10f, -15f);
+            GL.Vertex3(centro.x + ancho / 2, centro.y - alto / 2, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y + alto / 2, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y + alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y - alto / 2, centro.z - profundidad / 2);
             GL.End();
         }
     }

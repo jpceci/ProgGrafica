@@ -10,13 +10,14 @@ namespace ProgGrafica
     public class Game: GameWindow
     {
         private Casa casa;
+        private Casa casa2;
         private Auto auto;
-
         public Game(int width, int height, string title)
             : base(width, height, GraphicsMode.Default, title)
         {
-           casa = new Casa();
-            auto = new Auto();
+            casa = new Casa(new Punto(10, 10, 0), 6, 10, 10);
+            casa2 = new Casa(new Punto(-10, -10, 0), 6, 10, 10);
+            auto = new Auto(new Punto(-10, -10, 0), 2, 3, 7);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -54,6 +55,7 @@ namespace ProgGrafica
             //GL.End();
 
             casa.Dibujar();
+            //casa2.Dibujar();
             auto.Dibujar();
             GL.Rotate(2f,0,1,0);
 

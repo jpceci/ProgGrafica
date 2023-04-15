@@ -12,8 +12,17 @@ namespace ProgGrafica
 {
     class Auto
     {
-        public Auto()
+        private Punto centro;
+        private float alto;
+        private float ancho;
+        private float profundidad;
+
+        public Auto(Punto centro, float alto, float ancho, float profundidad)
         {
+            this.centro = centro;
+            this.alto = alto;
+            this.ancho = ancho;
+            this.profundidad = profundidad;
         }
 
         public void Dibujar()
@@ -40,7 +49,7 @@ namespace ProgGrafica
             GL.Color3(Color.Black);
             for (int i = 0; i < 180; i+=2)
             {
-                GL.Vertex3(11, -9 + Math.Cos(i) * 1, -6f + Math.Sin(i) * 1);
+                GL.Vertex3(centro.x - ancho / 2, centro.y - alto / 2 + Math.Cos(i) * 1, centro.z + profundidad / 4 + Math.Sin(i) * 1);
             }
             GL.End();
         }
@@ -51,7 +60,7 @@ namespace ProgGrafica
             GL.Color3(Color.Black);
             for (int i = 0; i < 180; i += 2)
             {
-                GL.Vertex3(14, -9 + Math.Cos(i) * 1, -6f + Math.Sin(i) * 1);
+                GL.Vertex3(centro.x + ancho / 2, centro.y - alto / 2 + Math.Cos(i) * 1, centro.z + profundidad / 4 + Math.Sin(i) * 1);
             }
             GL.End();
         }
@@ -62,7 +71,7 @@ namespace ProgGrafica
             GL.Color3(Color.Black);
             for (int i = 0; i < 180; i += 2)
             {
-                GL.Vertex3(11, -9 + Math.Cos(i) * 1, -3f + Math.Sin(i) * 1);
+                GL.Vertex3(centro.x - ancho / 2, centro.y - alto / 2 + Math.Cos(i) * 1, centro.z - profundidad / 4 + Math.Sin(i) * 1);
             }
             GL.End();
         }
@@ -73,7 +82,7 @@ namespace ProgGrafica
             GL.Color3(Color.Black);
             for (int i = 0; i < 180; i+=2)
             {
-                GL.Vertex3(14, -9 + Math.Cos(i) * 1, -3f + Math.Sin(i) * 1);
+                GL.Vertex3(centro.x + ancho / 2, centro.y - alto / 2 + Math.Cos(i) * 1, centro.z - profundidad / 4 + Math.Sin(i) * 1);
             }
             GL.End();
         }
@@ -81,65 +90,65 @@ namespace ProgGrafica
         private void DibujarVentanillaIzquierda(PrimitiveType primitiveType)
         {
             GL.Begin(primitiveType);
-            GL.Color3(Color.Blue);
-            GL.Vertex3(11f, -7f, -2f);
-            GL.Vertex3(11f, -5f, -3f);
-            GL.Vertex3(11f, -5f, -6f);
-            GL.Vertex3(11f, -7f, -7f);
+            GL.Color3(Color.Green);
+            GL.Vertex3(centro.x - ancho / 4, centro.y + alto / 2, centro.z - profundidad / 3);
+            GL.Vertex3(centro.x - ancho / 4, centro.y + alto, centro.z - profundidad / 4);
+            GL.Vertex3(centro.x - ancho / 4, centro.y + alto, centro.z + profundidad / 4);
+            GL.Vertex3(centro.x - ancho / 4, centro.y + alto / 2, centro.z + profundidad / 3);
             GL.End();
         }
 
         private void DibujarVentanillaDerecha(PrimitiveType primitiveType)
         {
             GL.Begin(primitiveType);
-            GL.Color3(Color.Blue);
-            GL.Vertex3(13f, -5f, -3f);
-            GL.Vertex3(13f, -7f, -2f);
-            GL.Vertex3(13f, -7f, -7f);
-            GL.Vertex3(13f, -5f, -6f);
+            GL.Color3(Color.Green);
+            GL.Vertex3(centro.x + ancho / 4, centro.y + alto / 2, centro.z - profundidad / 3);
+            GL.Vertex3(centro.x + ancho / 4, centro.y + alto, centro.z - profundidad / 4);
+            GL.Vertex3(centro.x + ancho / 4, centro.y + alto, centro.z + profundidad / 4);
+            GL.Vertex3(centro.x + ancho / 4, centro.y + alto / 2, centro.z + profundidad / 3);
             GL.End();
         }
         private void DibujarParabrisaTrasero(PrimitiveType primitiveType)
         {
             GL.Begin(primitiveType);
-            GL.Color3(Color.Blue);
-            GL.Vertex3(11f, -7f, -7f);
-            GL.Vertex3(11f, -5f, -6f);
-            GL.Vertex3(13f, -5f, -6f);
-            GL.Vertex3(13f, -7f, -7f);
+            GL.Color3(Color.Purple);
+            GL.Vertex3(centro.x - ancho / 4, centro.y + alto / 2, centro.z + profundidad / 3);
+            GL.Vertex3(centro.x - ancho / 4, centro.y + alto, centro.z + profundidad / 4);
+            GL.Vertex3(centro.x + ancho / 4, centro.y + alto, centro.z + profundidad / 4);
+            GL.Vertex3(centro.x + ancho / 4, centro.y + alto / 2, centro.z + profundidad / 3);
             GL.End();
         }
 
         private void DibujarParabrisaDelantero(PrimitiveType primitiveType)
         {
             GL.Begin(primitiveType);
-            GL.Color3(Color.Blue);
-            GL.Vertex3(11f, -7f, -2f);
-            GL.Vertex3(11f, -5f, -3f);
-            GL.Vertex3(13f, -5f, -3f);
-            GL.Vertex3(13f, -7f, -2f);
+            GL.Color3(Color.Purple);
+            GL.Vertex3(centro.x - ancho / 4, centro.y + alto / 2, centro.z - profundidad / 3);
+            GL.Vertex3(centro.x - ancho / 4, centro.y + alto, centro.z - profundidad / 4);
+            GL.Vertex3(centro.x + ancho / 4, centro.y + alto, centro.z - profundidad / 4);
+            GL.Vertex3(centro.x + ancho / 4, centro.y + alto / 2, centro.z - profundidad / 3);
             GL.End();
         }
 
         private void DibujarPuertaIzquierda(PrimitiveType primitiveType)
         {
             GL.Begin(primitiveType);
-            GL.Color3(Color.Blue);
-            GL.Vertex3(10f, -9f, 0f);
-            GL.Vertex3(10f, -7f, 0f);
-            GL.Vertex3(10f, -7f, -10f);
-            GL.Vertex3(10f, -9f, -10f);
+            GL.Color3(Color.Orange);
+            GL.Vertex3(centro.x - ancho / 2, centro.y - alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x - ancho / 2, centro.y + alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x - ancho / 2, centro.y + alto / 2, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x - ancho / 2, centro.y - alto / 2, centro.z + profundidad / 2);
             GL.End();
         }
 
         private void DibujarPuertaDerecha(PrimitiveType primitiveType)
         {
             GL.Begin(primitiveType);
-            GL.Color3(Color.Blue);
-            GL.Vertex3(14f, -9f, 0f);
-            GL.Vertex3(14f, -7f, 0f);
-            GL.Vertex3(14f, -7f, -10f);
-            GL.Vertex3(14f, -9f, -10f);
+            GL.Color3(Color.Orange);
+            GL.Vertex3(centro.x + ancho / 2, centro.y - alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y + alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y + alto / 2, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y - alto / 2, centro.z + profundidad / 2);
             GL.End();
         }
 
@@ -147,10 +156,10 @@ namespace ProgGrafica
         {
             GL.Begin(primitiveType);
             GL.Color3(Color.Blue);
-            GL.Vertex3(10f, -9f, -10f);
-            GL.Vertex3(10f, -7f, -10f);
-            GL.Vertex3(14f, -7f, -10f);
-            GL.Vertex3(14f, -9f, -10f);
+            GL.Vertex3(centro.x - ancho / 2, centro.y - alto / 2, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x - ancho / 2, centro.y + alto / 2, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y + alto / 2, centro.z + profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y - alto / 2, centro.z + profundidad / 2);
             GL.End();
         }
 
@@ -158,10 +167,10 @@ namespace ProgGrafica
         {
             GL.Begin(primitiveType);
             GL.Color3(Color.Blue);
-            GL.Vertex3(10f, -9f, 0f);
-            GL.Vertex3(10f, -7f, 0f);
-            GL.Vertex3(14f, -7f, 0f);
-            GL.Vertex3(14f, -9f, 0f);
+            GL.Vertex3(centro.x - ancho / 2, centro.y - alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x - ancho / 2, centro.y + alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y + alto / 2, centro.z - profundidad / 2);
+            GL.Vertex3(centro.x + ancho / 2, centro.y - alto / 2, centro.z - profundidad / 2);
             GL.End();
         }
     }
