@@ -12,12 +12,12 @@ namespace ProgGrafica
 {
     class Casa
     {
-        private Punto centro;
+        private Point centro;
         private float alto;
         private float ancho;
         private float profundidad;
 
-        public Casa(Punto centro, float alto, float ancho, float profundidad)
+        public Casa(Point centro, float alto, float ancho, float profundidad)
         {
             this.centro = centro;
             this.alto = alto;

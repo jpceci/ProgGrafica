@@ -12,12 +12,12 @@ namespace ProgGrafica
 {
     class Auto
     {
-        private Punto centro;
+        private Point centro;
         private float alto;
         private float ancho;
         private float profundidad;
 
-        public Auto(Punto centro, float alto, float ancho, float profundidad)
+        public Auto(Point centro, float alto, float ancho, float profundidad)
         {
             this.centro = centro;
             this.alto = alto;
@@ -90,7 +90,7 @@ namespace ProgGrafica
         private void DibujarVentanillaIzquierda(PrimitiveType primitiveType)
         {
             GL.Begin(primitiveType);
-            GL.Color3(Color.Green);
+            GL.Color3(Color.Orange);
             GL.Vertex3(centro.x - ancho / 4, centro.y + alto / 2, centro.z - profundidad / 3);
             GL.Vertex3(centro.x - ancho / 4, centro.y + alto, centro.z - profundidad / 4);
             GL.Vertex3(centro.x - ancho / 4, centro.y + alto, centro.z + profundidad / 4);
@@ -101,7 +101,7 @@ namespace ProgGrafica
         private void DibujarVentanillaDerecha(PrimitiveType primitiveType)
         {
             GL.Begin(primitiveType);
-            GL.Color3(Color.Green);
+            GL.Color3(Color.Orange);
             GL.Vertex3(centro.x + ancho / 4, centro.y + alto / 2, centro.z - profundidad / 3);
             GL.Vertex3(centro.x + ancho / 4, centro.y + alto, centro.z - profundidad / 4);
             GL.Vertex3(centro.x + ancho / 4, centro.y + alto, centro.z + profundidad / 4);
@@ -111,7 +111,7 @@ namespace ProgGrafica
         private void DibujarParabrisaTrasero(PrimitiveType primitiveType)
         {
             GL.Begin(primitiveType);
-            GL.Color3(Color.Purple);
+            GL.Color3(Color.FromArgb(1, 168, 204, 215));
             GL.Vertex3(centro.x - ancho / 4, centro.y + alto / 2, centro.z + profundidad / 3);
             GL.Vertex3(centro.x - ancho / 4, centro.y + alto, centro.z + profundidad / 4);
             GL.Vertex3(centro.x + ancho / 4, centro.y + alto, centro.z + profundidad / 4);
@@ -122,7 +122,7 @@ namespace ProgGrafica
         private void DibujarParabrisaDelantero(PrimitiveType primitiveType)
         {
             GL.Begin(primitiveType);
-            GL.Color3(Color.Purple);
+            GL.Color3(Color.FromArgb(1, 168, 204, 215));
             GL.Vertex3(centro.x - ancho / 4, centro.y + alto / 2, centro.z - profundidad / 3);
             GL.Vertex3(centro.x - ancho / 4, centro.y + alto, centro.z - profundidad / 4);
             GL.Vertex3(centro.x + ancho / 4, centro.y + alto, centro.z - profundidad / 4);
@@ -155,7 +155,7 @@ namespace ProgGrafica
         private void DibujarParachoqueTrasero(PrimitiveType primitiveType)
         {
             GL.Begin(primitiveType);
-            GL.Color3(Color.Blue);
+            GL.Color3(Color.Orange);
             GL.Vertex3(centro.x - ancho / 2, centro.y - alto / 2, centro.z + profundidad / 2);
             GL.Vertex3(centro.x - ancho / 2, centro.y + alto / 2, centro.z + profundidad / 2);
             GL.Vertex3(centro.x + ancho / 2, centro.y + alto / 2, centro.z + profundidad / 2);
@@ -166,7 +166,7 @@ namespace ProgGrafica
         private void DibujarParachoqueDelantero(PrimitiveType primitiveType)
         {
             GL.Begin(primitiveType);
-            GL.Color3(Color.Blue);
+            GL.Color3(Color.Orange);
             GL.Vertex3(centro.x - ancho / 2, centro.y - alto / 2, centro.z - profundidad / 2);
             GL.Vertex3(centro.x - ancho / 2, centro.y + alto / 2, centro.z - profundidad / 2);
             GL.Vertex3(centro.x + ancho / 2, centro.y + alto / 2, centro.z - profundidad / 2);

@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace ProgGrafica
 {
-    class Punto
+    class Point
     {
         public float x, y, z;
-        public Punto(float x, float y, float z)
+        public Point(float x, float y, float z)
         {
             this.x = x;
             this.y = y;
             this.z = z;
         }
 
+        public static Point operator +(Point a, Point b) => new Point(a.x + b.x, a.y + b.y, a.z + b.z);
     }
 }
