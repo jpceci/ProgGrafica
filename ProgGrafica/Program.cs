@@ -10,8 +10,8 @@ namespace ProgGrafica
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hola mundo");
-            Game game = new Game(500,500,"Triangulo");
+            Console.WriteLine("Jeon Jungkook");
+            Game game = new Game(500,500,"BTS");
             game.Run();
         }
     }

@@ -13,25 +13,26 @@ namespace ProgGrafica
         public Point centro{ get; set; }
         public Dictionary<string, Face> listaDeCaras{ get; set; }
         public Point centroReal { get; set; }
+        public Point centroEscenario { get; set; }
 
         public Object(Point centro, Dictionary<string, Face> listaDeCaras)
         {
-            this.centro = centro;
             this.listaDeCaras = listaDeCaras;
+            this.centro = centro;
             this.centroReal = centro;
+            centroEscenario = new Point(0, 0, 0);
 
-            foreach (var item in listaDeCaras)
+            foreach (Face face in listaDeCaras.Values)
             {
-                Face face = item.Value;
-                face.centro = face.centroReal + centro;
+                face.RefreshCentro(centro);
             }
+
         }
 
         public void Draw()
         {
-            foreach (var item in listaDeCaras)
+            foreach (Face face in listaDeCaras.Values)
             {
-                Face face = item.Value;
                 face.Draw();
             }
         }
@@ -51,21 +52,44 @@ namespace ProgGrafica
         }
         public void SetCentro(Point centro)
         {
-            this.centro = centro;
             this.centroReal = centro;
-             foreach (var item in listaDeCaras)
+            this.centro = centroReal + this.centroEscenario;
+            foreach (Face face in listaDeCaras.Values)
             {
-                Face face = item.Value;
-                face.centro = face.centroReal + centro;
+                face.RefreshCentro(this.centro);
             }
         }
         public void RefreshCentro(Point centro)
         {
-            this.centro = centro;
-            foreach (var item in listaDeCaras)
+            this.centroEscenario = centro;
+            this.centro = this.centroReal + centroEscenario;
+            foreach (Face face in listaDeCaras.Values)
             {
-                Face face = item.Value;
-                face.centro = face.centroReal + centro;
+                face.RefreshCentro(this.centro);
+            }
+        }
+
+        public void Translate(float valorATrasladar, int x, int y, int z)
+        {
+            foreach(Face face in listaDeCaras.Values)
+            {
+                face.Translate(valorATrasladar, x, y, z);
+            }
+        }
+
+        public void Scale(float valorAEscalar, int x, int y, int z)
+        {
+            foreach (Face face in listaDeCaras.Values)
+            {
+                face.Scale(valorAEscalar, x, y, z);
+            }
+        }
+
+        public void RotateStage(Point centroEscenario, float valorARotar, int x, int y, int z)
+        {
+            foreach (Face face in listaDeCaras.Values)
+            {
+                face.RotateStage(centroEscenario, valorARotar, x, y, z);
             }
         }
     }
